@@ -5,7 +5,7 @@ export const company = {
   city: "22761 Hamburg",
   phone: "023456789",
   ceo: "Ralf Becker",
-  prokura: ["Anna Magdalene Becker", "Kerstin Randolph"],
+  prokura: ["Anna Magdalene Becker", "Kerstin Randolph"] as const,
   vat: "DE456415195",
   register: "HRB 174998",
   court: "Amtsgericht Hamburg",
