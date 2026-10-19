@@ -15,6 +15,7 @@ import { Route as ImpressumRouteImport } from './routes/impressum'
 import { Route as KarriereRouteImport } from './routes/karriere'
 import { Route as KontaktRouteImport } from './routes/kontakt'
 import { Route as LeistungenRouteImport } from './routes/leistungen'
+import { Route as ReferenzenRouteImport } from './routes/referenzen'
 import { Route as UeberUnsRouteImport } from './routes/ueber-uns'
 
 const IndexRoute = IndexRouteImport.update({
@@ -47,6 +48,11 @@ const LeistungenRoute = LeistungenRouteImport.update({
   path: '/leistungen',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ReferenzenRoute = ReferenzenRouteImport.update({
+  id: '/referenzen',
+  path: '/referenzen',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const UeberUnsRoute = UeberUnsRouteImport.update({
   id: '/ueber-uns',
   path: '/ueber-uns',
@@ -60,6 +66,7 @@ export interface FileRoutesByFullPath {
   '/karriere': typeof KarriereRoute
   '/kontakt': typeof KontaktRoute
   '/leistungen': typeof LeistungenRoute
+  '/referenzen': typeof ReferenzenRoute
   '/ueber-uns': typeof UeberUnsRoute
 }
 export interface FileRoutesByTo {
@@ -69,6 +76,7 @@ export interface FileRoutesByTo {
   '/karriere': typeof KarriereRoute
   '/kontakt': typeof KontaktRoute
   '/leistungen': typeof LeistungenRoute
+  '/referenzen': typeof ReferenzenRoute
   '/ueber-uns': typeof UeberUnsRoute
 }
 export interface FileRoutesById {
@@ -79,6 +87,7 @@ export interface FileRoutesById {
   '/karriere': typeof KarriereRoute
   '/kontakt': typeof KontaktRoute
   '/leistungen': typeof LeistungenRoute
+  '/referenzen': typeof ReferenzenRoute
   '/ueber-uns': typeof UeberUnsRoute
 }
 export interface FileRouteTypes {
@@ -90,6 +99,7 @@ export interface FileRouteTypes {
     | '/karriere'
     | '/kontakt'
     | '/leistungen'
+    | '/referenzen'
     | '/ueber-uns'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -99,6 +109,7 @@ export interface FileRouteTypes {
     | '/karriere'
     | '/kontakt'
     | '/leistungen'
+    | '/referenzen'
     | '/ueber-uns'
   id:
     | '__root__'
@@ -108,6 +119,7 @@ export interface FileRouteTypes {
     | '/karriere'
     | '/kontakt'
     | '/leistungen'
+    | '/referenzen'
     | '/ueber-uns'
   fileRoutesById: FileRoutesById
 }
@@ -118,6 +130,7 @@ export interface RootRouteChildren {
   KarriereRoute: typeof KarriereRoute
   KontaktRoute: typeof KontaktRoute
   LeistungenRoute: typeof LeistungenRoute
+  ReferenzenRoute: typeof ReferenzenRoute
   UeberUnsRoute: typeof UeberUnsRoute
 }
 
@@ -165,6 +178,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LeistungenRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/referenzen': {
+      id: '/referenzen'
+      path: '/referenzen'
+      fullPath: '/referenzen'
+      preLoaderRoute: typeof ReferenzenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/ueber-uns': {
       id: '/ueber-uns'
       path: '/ueber-uns'
@@ -182,6 +202,7 @@ const rootRouteChildren: RootRouteChildren = {
   KarriereRoute: KarriereRoute,
   KontaktRoute: KontaktRoute,
   LeistungenRoute: LeistungenRoute,
+  ReferenzenRoute: ReferenzenRoute,
   UeberUnsRoute: UeberUnsRoute,
 }
 export const routeTree = rootRouteImport

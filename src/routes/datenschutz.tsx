@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { company, meta } from "@/lib/company";
+import { PageLayout, SlantTitle } from "@/components/site";
 
 export const Route = createFileRoute("/datenschutz")({
   head: () => ({ meta: meta("Datenschutzerklärung – bbm-consulting GmbH", "Informationen zur Verarbeitung personenbezogener Daten gemäß DSGVO bei der bbm-consulting GmbH.") }),
@@ -8,9 +9,9 @@ export const Route = createFileRoute("/datenschutz")({
 
 function Page() {
   return (
-    <section className="container-x max-w-3xl py-20">
-      <h1 className="text-4xl font-bold md:text-5xl">Datenschutzerklärung</h1>
-      <div className="mt-10 space-y-8 leading-relaxed text-muted-foreground [&_h2]:mb-2 [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:text-foreground">
+    <PageLayout banner={false}>
+      <SlantTitle>Datenschutzerklärung</SlantTitle>
+      <div className="space-y-5 [&_h2]:mb-1 [&_h2]:font-bold [&_h2]:text-foreground">
         <div><h2>1. Verantwortlicher</h2><p>{company.name}, {company.street}, {company.city}<br />Vertreten durch den Geschäftsführer {company.ceo}<br />Telefon: {company.phone} · E-Mail: {company.mail.info}</p></div>
         <div><h2>2. Kontakt in Datenschutzfragen</h2><p>Bei Fragen zum Datenschutz wenden Sie sich bitte an: <a className="text-primary" href={`mailto:${company.mail.datenschutz}`}>{company.mail.datenschutz}</a></p></div>
         <div><h2>3. Allgemeines zur Datenverarbeitung</h2><p>Wir verarbeiten personenbezogene Daten nur, soweit dies zur Bereitstellung einer funktionsfähigen Website sowie unserer Inhalte und Leistungen erforderlich ist. Rechtsgrundlagen sind insbesondere Art. 6 Abs. 1 lit. a, b, c und f DSGVO.</p></div>
@@ -23,6 +24,6 @@ function Page() {
         <div><h2>10. Datensicherheit</h2><p>Diese Website nutzt eine SSL- bzw. TLS-Verschlüsselung. Wir treffen technische und organisatorische Maßnahmen, um Ihre Daten gegen Verlust und unbefugten Zugriff zu schützen.</p></div>
         <div><h2>11. Aktualität</h2><p>Stand: Oktober 2026. Wir behalten uns vor, diese Datenschutzerklärung bei Bedarf anzupassen.</p></div>
       </div>
-    </section>
+    </PageLayout>
   );
 }
