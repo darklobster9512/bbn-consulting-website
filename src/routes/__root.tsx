@@ -12,7 +12,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
-import { Header, Footer } from "../components/site";
+import { Header, Footer, MobileBar } from "../components/site";
 
 function NotFoundComponent() {
   return (
@@ -123,6 +123,7 @@ function RootComponent() {
         <Outlet />
       </main>
       <Footer />
+      <MobileBar />
     </QueryClientProvider>
   );
 }
