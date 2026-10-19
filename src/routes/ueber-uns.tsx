@@ -31,11 +31,11 @@ function Page() {
       <QuoteBox text="Wir verstehen uns nicht als externe Beobachter, sondern als Partner, der Verantwortung übernimmt." by={`${company.ceo}, Geschäftsführer`} />
 
       <SlantTitle as="h2">Geschäftsführung & Prokura</SlantTitle>
-      <div className="grid gap-4 sm:grid-cols-3">
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4">
         {team.map((p) => (
           <Reveal key={p.n}>
             <div className="group border">
-              <div className="h-56 overflow-hidden"><img src={p.img} alt={p.n} loading="lazy" className="zoom-img bw h-full w-full object-cover object-top group-hover:scale-105 group-hover:grayscale-0" /></div>
+              <div className="h-40 overflow-hidden sm:h-56"><img src={p.img} alt={p.n} loading="lazy" className="zoom-img bw h-full w-full object-cover object-top group-hover:scale-105 group-hover:grayscale-0" /></div>
               <div className="border-t-4 border-primary p-3"><p className="font-bold">{p.n}</p><p className="text-muted-foreground">{p.r}</p></div>
             </div>
           </Reveal>
