@@ -34,6 +34,10 @@ function Page() {
     >
       <SlantTitle>Kontakt</SlantTitle>
       <p className="mb-5">Sie haben Fragen oder wünschen ein persönliches Gespräch? Schreiben Sie uns – wir melden uns zeitnah bei Ihnen.</p>
+      <div className="mb-6 border-t-4 border-primary">
+        <iframe title="Standort bbm-consulting" className="h-64 w-full grayscale" loading="lazy"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=9.917%2C53.548%2C9.937%2C53.556&layer=mapnik&marker=53.5521%2C9.9271" />
+      </div>
       <form onSubmit={submit} className="space-y-3">
         <div className="grid gap-3 sm:grid-cols-2">
           <label>Name *<input required className={input} value={f.name} onChange={(e) => setF({ ...f, name: e.target.value })} /></label>
