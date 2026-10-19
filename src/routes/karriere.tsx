@@ -1,11 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Send } from "lucide-react";
-import career from "@/assets/career.jpg";
-import services from "@/assets/services.jpg";
-import about from "@/assets/about.jpg";
-import contact from "@/assets/contact.jpg";
 import { Bullets, ContactBox, PageLayout, SideBox, SlantTitle, Tile } from "@/components/site";
 import { company, meta } from "@/lib/company";
+import { photos } from "@/lib/photos";
 
 export const Route = createFileRoute("/karriere")({
   head: () => ({ meta: meta("Karriere – bbm-consulting GmbH", "Offene Stellen bei der bbm-consulting GmbH in Hamburg. Jetzt bewerben.") }),
@@ -13,10 +10,10 @@ export const Route = createFileRoute("/karriere")({
 });
 
 const jobs = [
-  { t: "Senior Consultant (m/w/d) Strategie", img: services, d: "Vollzeit, Hamburg. Sie verantworten Strategieprojekte bei unseren Mandanten und führen kleine Projektteams." },
-  { t: "Consultant (m/w/d) Prozessmanagement", img: contact, d: "Vollzeit, Hamburg / mobil. Sie analysieren und optimieren Geschäftsprozesse gemeinsam mit unseren Kunden." },
-  { t: "Projektmanager (m/w/d)", img: about, d: "Vollzeit, Hamburg. Sie steuern komplexe Kundenprojekte termin- und budgetgerecht." },
-  { t: "Werkstudent (m/w/d) Consulting", img: career, d: "Teilzeit, Hamburg. Sie unterstützen unsere Berater bei Recherchen, Analysen und Präsentationen." },
+  { t: "Senior Consultant (m/w/d) Strategie", img: photos.presentation, d: "Vollzeit, Hamburg. Sie verantworten Strategieprojekte bei unseren Mandanten und führen kleine Projektteams." },
+  { t: "Consultant (m/w/d) Prozessmanagement", img: photos.workshop, d: "Vollzeit, Hamburg / mobil. Sie analysieren und optimieren Geschäftsprozesse gemeinsam mit unseren Kunden." },
+  { t: "Projektmanager (m/w/d)", img: photos.success, d: "Vollzeit, Hamburg. Sie steuern komplexe Kundenprojekte termin- und budgetgerecht." },
+  { t: "Werkstudent (m/w/d) Consulting", img: photos.team, d: "Teilzeit, Hamburg. Sie unterstützen unsere Berater bei Recherchen, Analysen und Präsentationen." },
 ];
 
 function Page() {
