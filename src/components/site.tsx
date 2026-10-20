@@ -140,7 +140,7 @@ export function SlantTitle({ children, as: Tag = "h1", icon: I }: { children: Re
   );
 }
 
-function BarHead({ icon: I, title }: { icon: Icon; title: string }) {
+export function BarHead({ icon: I, title }: { icon: Icon; title: string }) {
   return (
     <div className="flex h-[35px] items-center bg-primary text-primary-foreground">
       <span className="slant ml-2 flex h-full w-14 items-center justify-center bg-primary-dark"><I className="h-4 w-4" /></span>

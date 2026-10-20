@@ -5,7 +5,7 @@ import { company, meta } from "@/lib/company";
 import { photos } from "@/lib/photos";
 import { useT } from "@/lib/i18n";
 
-export const Route = createFileRoute("/karriere")({
+export const Route = createFileRoute("/karriere/")({
   head: () => ({ meta: meta("Karriere & Jobs in der Unternehmensberatung Hamburg | bbm-consulting", "Starten Sie Ihre Karriere bei der bbm-consulting GmbH in Hamburg: offene Stellen in der Beratung, flache Hierarchien und spannende Projekte. Jetzt bewerben.", "/karriere") }),
   component: Page,
 });
