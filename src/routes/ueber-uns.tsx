@@ -11,7 +11,7 @@ export const Route = createFileRoute("/ueber-uns")({
 
 const T = {
   de: {
-    title: "Über uns – bbm-consulting GmbH", h: "Über bbm-consulting", lead: "Unabhängig. Verlässlich. Hanseatisch.",
+    title: "Über uns – inhabergeführte Beratung aus Hamburg | bbm-consulting", h: "Über bbm-consulting", lead: "Unabhängig. Verlässlich. Hanseatisch.",
     p1: "Die bbm-consulting GmbH ist eine inhabergeführte Unternehmensberatung mit Sitz in Hamburg. Wir begleiten Unternehmen unterschiedlicher Größe und Branchen in allen Fragen der Unternehmensführung und -entwicklung.",
     p2: "Unsere Arbeit beruht auf drei Grundsätzen:",
     values: ["Integrität – ehrlich, transparent und diskret", "Qualität – fundierte Analysen und umsetzbare Konzepte", "Nähe – persönliche Betreuung und kurze Entscheidungswege"],
@@ -21,7 +21,7 @@ const T = {
     team: "Geschäftsführung & Prokura", pro: "Prokuristin",
   },
   en: {
-    title: "About us – bbm-consulting GmbH", h: "About bbm-consulting", lead: "Independent. Reliable. Hanseatic.",
+    title: "About us – owner-managed consultancy from Hamburg | bbm-consulting", h: "About bbm-consulting", lead: "Independent. Reliable. Hanseatic.",
     p1: "bbm-consulting GmbH is an owner-managed management consultancy based in Hamburg. We support companies of all sizes and industries in every aspect of corporate management and development.",
     p2: "Our work is based on three principles:",
     values: ["Integrity – honest, transparent and discreet", "Quality – well-founded analyses and actionable concepts", "Proximity – personal support and short decision paths"],

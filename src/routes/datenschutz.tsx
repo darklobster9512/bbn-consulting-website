@@ -11,7 +11,7 @@ export const Route = createFileRoute("/datenschutz")({
 const c = company;
 const T = {
   de: {
-    title: "Datenschutzerklärung – bbm-consulting GmbH", h: "Datenschutzerklärung", note: "",
+    title: "Datenschutzerklärung | bbm-consulting GmbH Hamburg", h: "Datenschutzerklärung", note: "",
     s: [
       ["1. Verantwortlicher", `${c.name}, ${c.street}, ${c.city}\nVertreten durch den Geschäftsführer ${c.ceo}\nTelefon: ${c.phone} · E-Mail: ${c.mail.info}`],
       ["2. Kontakt in Datenschutzfragen", `Bei Fragen zum Datenschutz wenden Sie sich bitte an: ${c.mail.datenschutz}`],
@@ -28,7 +28,7 @@ const T = {
     ] as [string, string][],
   },
   en: {
-    title: "Privacy policy – bbm-consulting GmbH", h: "Privacy policy", note: "This English translation is provided for convenience only. The German version is legally binding.",
+    title: "Privacy Policy | bbm-consulting GmbH Hamburg", h: "Privacy policy", note: "This English translation is provided for convenience only. The German version is legally binding.",
     s: [
       ["1. Controller", `${c.name}, ${c.street}, ${c.city}\nRepresented by the managing director ${c.ceo}\nPhone: ${c.phone} · Email: ${c.mail.info}`],
       ["2. Data protection contact", `For questions about data protection, please contact: ${c.mail.datenschutz}`],

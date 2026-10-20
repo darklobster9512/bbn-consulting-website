@@ -18,7 +18,8 @@ export const company = {
   },
 };
 
-export const meta = (title: string, description: string) => [
+export const meta = (title: string, description: string, path = "/") => [
+  { property: "og:url", content: path },
   { title },
   { name: "description", content: description },
   { property: "og:title", content: title },

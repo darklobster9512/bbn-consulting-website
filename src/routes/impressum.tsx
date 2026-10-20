@@ -11,7 +11,7 @@ export const Route = createFileRoute("/impressum")({
 const c = company;
 const T = {
   de: {
-    title: "Impressum – bbm-consulting GmbH", h: "Impressum", note: "",
+    title: "Impressum | bbm-consulting GmbH Hamburg", h: "Impressum", note: "",
     s: [
       ["Angaben gemäß § 5 DDG", `${c.name}\n${c.street}\n${c.city}\nDeutschland`],
       ["Vertreten durch", `Geschäftsführer: ${c.ceo}\nProkuristen: ${c.prokura.join(", ")}`],
@@ -26,7 +26,7 @@ const T = {
     ] as [string, string][],
   },
   en: {
-    title: "Legal notice – bbm-consulting GmbH", h: "Legal notice", note: "This English translation is provided for convenience only. The German version is legally binding.",
+    title: "Legal Notice | bbm-consulting GmbH Hamburg", h: "Legal notice", note: "This English translation is provided for convenience only. The German version is legally binding.",
     s: [
       ["Information pursuant to § 5 DDG", `${c.name}\n${c.street}\n${c.city}\nGermany`],
       ["Represented by", `Managing director: ${c.ceo}\nAuthorised signatories (Prokura): ${c.prokura.join(", ")}`],
