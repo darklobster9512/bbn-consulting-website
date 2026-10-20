@@ -18,7 +18,7 @@ const T = {
     office: "Büroräume", history: "Unsere Geschichte",
     timeline: [["2005", "Gründung als Beratungsbüro in Hamburg."], ["2012", "Erweiterung um Interim- und Projektmanagement."], ["2018", "Umfirmierung zur bbm-consulting GmbH."], ["2026", "Neue Büroräume in der Ruhrstraße, Hamburg-Altona."]] as [string, string][],
     quote: "Wir verstehen uns nicht als externe Beobachter, sondern als Partner, der Verantwortung übernimmt.", ceo: "Geschäftsführer",
-    team: "Geschäftsführung & Prokura", pro: "Prokuristin",
+    team: "Geschäftsführung & Prokura", pro: "Prokuristin", staff: "Unser Team", roles: ["Projektleiter", "Recruiter", "Senior Consultant", "Consultant Prozessmanagement", "Junior Consultant", "Office Management & Assistenz"],
   },
   en: {
     title: "About us – owner-managed consultancy from Hamburg | bbm-consulting", h: "About bbm-consulting", lead: "Independent. Reliable. Hanseatic.",
@@ -28,7 +28,7 @@ const T = {
     office: "Offices", history: "Our history",
     timeline: [["2005", "Founded as a consulting office in Hamburg."], ["2012", "Expanded into interim and project management."], ["2018", "Renamed bbm-consulting GmbH."], ["2026", "New offices in Ruhrstraße, Hamburg-Altona."]] as [string, string][],
     quote: "We do not see ourselves as outside observers, but as a partner who takes on responsibility.", ceo: "Managing Director",
-    team: "Management & authorised signatories", pro: "Authorised signatory",
+    team: "Management & authorised signatories", pro: "Authorised signatory", staff: "Our team", roles: ["Project Manager", "Recruiter", "Senior Consultant", "Consultant Process Management", "Junior Consultant", "Office Management & Assistant"],
   },
 };
 
@@ -39,6 +39,21 @@ function Page() {
     { n: company.prokura[0], r: t.pro, img: photos.pAnna },
     { n: company.prokura[1], r: t.pro, img: photos.pKerstin },
   ];
+  const staff = (["Michael Schüller", "Simon Wieser", "Laura Hoffmann", "Julia Brandt", "Sophie Krämer", "Sabine Lorenz"] as const).map((n, i) => ({
+    n, r: t.roles[i] ?? "", img: [photos.pSchueller, photos.pWieser, photos.pHoffmann, photos.pBrandt, photos.pKraemer, photos.pLorenz][i] ?? photos.team,
+  }));
+  const grid = (list: { n: string; r: string; img: string }[]) => (
+    <div className="mb-8 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4">
+      {list.map((p) => (
+        <Reveal key={p.n}>
+          <div className="group border">
+            <div className="aspect-[4/5] overflow-hidden"><img src={p.img} alt={p.n} loading="lazy" className="zoom-img bw h-full w-full object-cover object-top group-hover:scale-105 group-hover:grayscale-0" /></div>
+            <div className="border-t-4 border-primary p-3"><p className="font-bold">{p.n}</p><p className="text-muted-foreground">{p.r}</p></div>
+          </div>
+        </Reveal>
+      ))}
+    </div>
+  );
   return (
     <PageLayout side={<><ContactBox /><NewsBox /></>}>
       <SlantTitle>{t.h}</SlantTitle>
@@ -55,16 +70,9 @@ function Page() {
       <QuoteBox text={t.quote} by={`${company.ceo}, ${t.ceo}`} />
 
       <SlantTitle as="h2">{t.team}</SlantTitle>
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4">
-        {team.map((p) => (
-          <Reveal key={p.n}>
-            <div className="group border">
-              <div className="h-40 overflow-hidden sm:h-56"><img src={p.img} alt={p.n} loading="lazy" className="zoom-img bw h-full w-full object-cover object-top group-hover:scale-105 group-hover:grayscale-0" /></div>
-              <div className="border-t-4 border-primary p-3"><p className="font-bold">{p.n}</p><p className="text-muted-foreground">{p.r}</p></div>
-            </div>
-          </Reveal>
-        ))}
-      </div>
+      {grid(team)}
+      <SlantTitle as="h2">{t.staff}</SlantTitle>
+      {grid(staff)}
     </PageLayout>
   );
 }
