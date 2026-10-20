@@ -323,9 +323,6 @@ export function Footer() {
       <div className="border-t border-footer-muted/30">
         <div className="wrap flex flex-wrap items-center justify-between gap-4 py-4 text-[12px] text-footer-muted">
           <span className="leading-relaxed">© {new Date().getFullYear()} {company.name}<span className="hidden sm:inline"> · </span><br className="sm:hidden" />{company.register}, {t.court} · {t.vat} {company.vat}</span>
-          <div className="flex gap-1">
-            {["in", "X"].map((s) => <span key={s} className="slant flex h-9 w-12 items-center justify-center bg-primary font-bold text-primary-foreground">{s}</span>)}
-          </div>
         </div>
       </div>
     </footer>
