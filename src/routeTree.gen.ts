@@ -17,6 +17,8 @@ import { Route as LeistungenRouteImport } from './routes/leistungen'
 import { Route as ReferenzenRouteImport } from './routes/referenzen'
 import { Route as UeberUnsRouteImport } from './routes/ueber-uns'
 import { Route as KarriereIndexRouteImport } from './routes/karriere.index'
+import { Route as KarriereSlugRouteImport } from './routes/karriere.$slug'
+import { Route as KarriereBewerbungRouteImport } from './routes/karriere.bewerbung'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -58,6 +60,16 @@ const KarriereIndexRoute = KarriereIndexRouteImport.update({
   path: '/karriere/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const KarriereSlugRoute = KarriereSlugRouteImport.update({
+  id: '/karriere/$slug',
+  path: '/karriere/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KarriereBewerbungRoute = KarriereBewerbungRouteImport.update({
+  id: '/karriere/bewerbung',
+  path: '/karriere/bewerbung',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -67,6 +79,8 @@ export interface FileRoutesByFullPath {
   '/leistungen': typeof LeistungenRoute
   '/referenzen': typeof ReferenzenRoute
   '/ueber-uns': typeof UeberUnsRoute
+  '/karriere/$slug': typeof KarriereSlugRoute
+  '/karriere/bewerbung': typeof KarriereBewerbungRoute
   '/karriere/': typeof KarriereIndexRoute
 }
 export interface FileRoutesByTo {
@@ -77,6 +91,8 @@ export interface FileRoutesByTo {
   '/leistungen': typeof LeistungenRoute
   '/referenzen': typeof ReferenzenRoute
   '/ueber-uns': typeof UeberUnsRoute
+  '/karriere/$slug': typeof KarriereSlugRoute
+  '/karriere/bewerbung': typeof KarriereBewerbungRoute
   '/karriere': typeof KarriereIndexRoute
 }
 export interface FileRoutesById {
@@ -88,6 +104,8 @@ export interface FileRoutesById {
   '/leistungen': typeof LeistungenRoute
   '/referenzen': typeof ReferenzenRoute
   '/ueber-uns': typeof UeberUnsRoute
+  '/karriere/$slug': typeof KarriereSlugRoute
+  '/karriere/bewerbung': typeof KarriereBewerbungRoute
   '/karriere/': typeof KarriereIndexRoute
 }
 export interface FileRouteTypes {
@@ -100,6 +118,8 @@ export interface FileRouteTypes {
     | '/leistungen'
     | '/referenzen'
     | '/ueber-uns'
+    | '/karriere/$slug'
+    | '/karriere/bewerbung'
     | '/karriere/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -110,6 +130,8 @@ export interface FileRouteTypes {
     | '/leistungen'
     | '/referenzen'
     | '/ueber-uns'
+    | '/karriere/$slug'
+    | '/karriere/bewerbung'
     | '/karriere'
   id:
     | '__root__'
@@ -120,6 +142,8 @@ export interface FileRouteTypes {
     | '/leistungen'
     | '/referenzen'
     | '/ueber-uns'
+    | '/karriere/$slug'
+    | '/karriere/bewerbung'
     | '/karriere/'
   fileRoutesById: FileRoutesById
 }
@@ -131,6 +155,8 @@ export interface RootRouteChildren {
   LeistungenRoute: typeof LeistungenRoute
   ReferenzenRoute: typeof ReferenzenRoute
   UeberUnsRoute: typeof UeberUnsRoute
+  KarriereSlugRoute: typeof KarriereSlugRoute
+  KarriereBewerbungRoute: typeof KarriereBewerbungRoute
   KarriereIndexRoute: typeof KarriereIndexRoute
 }
 
@@ -192,6 +218,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof KarriereIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/karriere/$slug': {
+      id: '/karriere/$slug'
+      path: '/karriere/$slug'
+      fullPath: '/karriere/$slug'
+      preLoaderRoute: typeof KarriereSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/karriere/bewerbung': {
+      id: '/karriere/bewerbung'
+      path: '/karriere/bewerbung'
+      fullPath: '/karriere/bewerbung'
+      preLoaderRoute: typeof KarriereBewerbungRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -203,6 +243,8 @@ const rootRouteChildren: RootRouteChildren = {
   LeistungenRoute: LeistungenRoute,
   ReferenzenRoute: ReferenzenRoute,
   UeberUnsRoute: UeberUnsRoute,
+  KarriereSlugRoute: KarriereSlugRoute,
+  KarriereBewerbungRoute: KarriereBewerbungRoute,
   KarriereIndexRoute: KarriereIndexRoute,
 }
 export const routeTree = rootRouteImport
