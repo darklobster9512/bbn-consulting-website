@@ -29,7 +29,7 @@ const T = {
       ["Organisation & Prozesse", "Effiziente Strukturen und schlanke Abläufe: Wir analysieren Ihre Organisation und verankern Verbesserungen nachhaltig."],
       ["Interim- & Projektmanagement", "Erfahrene Manager übernehmen kurzfristig Verantwortung – bei Vakanzen, in Sondersituationen oder in komplexen Projekten."],
       ["Karriere bei bbm-consulting", "Sie möchten Unternehmen voranbringen? Wir suchen engagierte Beraterinnen und Berater, die mit uns wachsen wollen."],
-    ],
+    ] as [string, string][],
     jobsCta: "Zu den Stellen",
   },
   en: {
@@ -50,7 +50,7 @@ const T = {
       ["Organisation & processes", "Efficient structures and lean workflows: we analyse your organisation and embed improvements for the long term."],
       ["Interim & project management", "Experienced managers take on responsibility at short notice – for vacancies, special situations or complex projects."],
       ["Careers at bbm-consulting", "Want to move companies forward? We are looking for committed consultants who want to grow with us."],
-    ],
+    ] as [string, string][],
     jobsCta: "View openings",
   },
 };
@@ -83,10 +83,9 @@ function Index() {
       <QuoteBox text={t.quote} by={t.quoteBy} />
 
       <div className="grid gap-x-4 gap-y-8 border-t pt-6 sm:grid-cols-2">
-        <Tile title={t.tiles[0][0]} image={photos.presentation} text={t.tiles[0][1]} />
-        <Tile title={t.tiles[1][0]} image={photos.workshop} text={t.tiles[1][1]} />
-        <Tile title={t.tiles[2][0]} image={photos.handshake} text={t.tiles[2][1]} />
-        <Tile title={t.tiles[3][0]} image={photos.team} to="/karriere" text={t.tiles[3][1]} cta={t.jobsCta} />
+        {t.tiles.map(([title, text], i) => i === 3
+          ? <Tile key={i} title={title} image={photos.team} to="/karriere" text={text} cta={t.jobsCta} />
+          : <Tile key={i} title={title} image={[photos.presentation, photos.workshop, photos.handshake][i] ?? photos.team} text={text} />)}
       </div>
     </PageLayout>
   );

@@ -25,7 +25,7 @@ const T = {
       ["9. Ihre Rechte", "Sie haben das Recht auf Auskunft (Art. 15), Berichtigung (Art. 16), Löschung (Art. 17), Einschränkung der Verarbeitung (Art. 18), Datenübertragbarkeit (Art. 20) und Widerspruch (Art. 21 DSGVO). Erteilte Einwilligungen können Sie jederzeit widerrufen. Zudem besteht ein Beschwerderecht bei einer Aufsichtsbehörde, z. B. dem Hamburgischen Beauftragten für Datenschutz und Informationsfreiheit."],
       ["10. Datensicherheit", "Diese Website nutzt eine SSL- bzw. TLS-Verschlüsselung. Wir treffen technische und organisatorische Maßnahmen, um Ihre Daten gegen Verlust und unbefugten Zugriff zu schützen."],
       ["11. Aktualität", "Stand: Oktober 2026. Wir behalten uns vor, diese Datenschutzerklärung bei Bedarf anzupassen."],
-    ],
+    ] as [string, string][],
   },
   en: {
     title: "Privacy policy – bbm-consulting GmbH", h: "Privacy policy", note: "This English translation is provided for convenience only. The German version is legally binding.",
@@ -42,7 +42,7 @@ const T = {
       ["9. Your rights", "You have the right of access (Art. 15), rectification (Art. 16), erasure (Art. 17), restriction of processing (Art. 18), data portability (Art. 20) and objection (Art. 21 GDPR). You may withdraw consent at any time. You also have the right to lodge a complaint with a supervisory authority, e.g. the Hamburg Commissioner for Data Protection and Freedom of Information."],
       ["10. Data security", "This website uses SSL/TLS encryption. We take technical and organisational measures to protect your data against loss and unauthorised access."],
       ["11. Last updated", "As of October 2026. We reserve the right to amend this privacy policy as necessary."],
-    ],
+    ] as [string, string][],
   },
 };
 

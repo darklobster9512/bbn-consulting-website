@@ -23,7 +23,7 @@ const T = {
       ["Haftung für Inhalte", "Als Diensteanbieter sind wir für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Wir sind jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen. Bei Bekanntwerden von Rechtsverletzungen werden wir diese Inhalte umgehend entfernen."],
       ["Haftung für Links", "Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter verantwortlich. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen."],
       ["Urheberrecht", "Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Vervielfältigung, Bearbeitung und Verbreitung außerhalb der Grenzen des Urheberrechts bedürfen der schriftlichen Zustimmung."],
-    ],
+    ] as [string, string][],
   },
   en: {
     title: "Legal notice – bbm-consulting GmbH", h: "Legal notice", note: "This English translation is provided for convenience only. The German version is legally binding.",
@@ -38,7 +38,7 @@ const T = {
       ["Liability for content", "As a service provider, we are responsible for our own content on these pages in accordance with general law. However, we are not obliged to monitor transmitted or stored third-party information. Upon becoming aware of legal violations, we will remove such content immediately."],
       ["Liability for links", "Our website contains links to external third-party websites over whose content we have no influence. The respective provider is always responsible for the content of linked pages. Upon becoming aware of legal violations, we will remove such links immediately."],
       ["Copyright", "The content and works created by the site operators on these pages are subject to German copyright law. Reproduction, editing and distribution beyond the limits of copyright law require written consent."],
-    ],
+    ] as [string, string][],
   },
 };
 

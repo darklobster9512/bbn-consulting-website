@@ -19,7 +19,7 @@ const T = {
       ["Logistik", "Prozessoptimierung im Lager- und Transportmanagement eines Logistikdienstleisters."],
       ["Industrie", "Interim-Geschäftsführung während einer Restrukturierungsphase."],
       ["Dienstleistung", "Aufbau eines Projektmanagement-Office für ein wachsendes Dienstleistungsunternehmen."],
-    ],
+    ] as [string, string][],
   },
   en: {
     title: "References – bbm-consulting GmbH", h: "References", p1: "Our clients come from a wide range of industries, including:",
@@ -31,7 +31,7 @@ const T = {
       ["Logistics", "Process optimisation in warehouse and transport management for a logistics provider."],
       ["Industry", "Interim management during a restructuring phase."],
       ["Services", "Setting up a project management office for a growing service company."],
-    ],
+    ] as [string, string][],
   },
 };
 

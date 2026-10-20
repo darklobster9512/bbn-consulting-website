@@ -24,7 +24,7 @@ const T = {
       ["Consultant (m/w/d) Prozessmanagement", "Vollzeit, Hamburg / mobil. Sie analysieren und optimieren Geschäftsprozesse gemeinsam mit unseren Kunden."],
       ["Projektmanager (m/w/d)", "Vollzeit, Hamburg. Sie steuern komplexe Kundenprojekte termin- und budgetgerecht."],
       ["Werkstudent (m/w/d) Consulting", "Teilzeit, Hamburg. Sie unterstützen unsere Berater bei Recherchen, Analysen und Präsentationen."],
-    ],
+    ] as [string, string][],
   },
   en: {
     title: "Careers – bbm-consulting GmbH", h: "Careers", side: "Application", subject: "Application: ", cta: "Apply now",
@@ -37,7 +37,7 @@ const T = {
       ["Consultant (m/f/d) Process Management", "Full-time, Hamburg / remote. You analyse and optimise business processes together with our clients."],
       ["Project Manager (m/f/d)", "Full-time, Hamburg. You steer complex client projects on time and on budget."],
       ["Working Student (m/f/d) Consulting", "Part-time, Hamburg. You support our consultants with research, analyses and presentations."],
-    ],
+    ] as [string, string][],
   },
 };
 
@@ -62,7 +62,7 @@ function Page() {
       <p>{t.p2}</p>
       <Bullets items={t.perks} />
       <div className="mt-6 grid gap-x-4 gap-y-8 border-t pt-6 sm:grid-cols-2">
-        {t.jobs.map(([title, d], i) => <Tile key={i} title={title} image={imgs[i]} text={d} href={mail(title)} cta={t.cta} />)}
+        {t.jobs.map(([title, d], i) => <Tile key={i} title={title} image={imgs[i] ?? photos.team} text={d} href={mail(title)} cta={t.cta} />)}
       </div>
     </PageLayout>
   );
