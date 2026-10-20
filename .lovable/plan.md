@@ -1,9 +1,9 @@
-# Domain bbm-consult.solutions direkt auf dem Server freischalten
+# Website auf eigenem Server mit bbm-consult.solutions starten
 
-Die Website blockiert noch Aufrufe über Ihre Domain. Das lässt sich direkt auf dem Server beheben, ohne Projektdateien neu zu übertragen.
+## Ursache
+Die fertige Version wird für Lovables Hosting gebaut, nicht für einen normalen Server. Deshalb findet `preview` die erwartete Datei nicht. Auf Ihrem Server ist der Entwicklungsmodus der zuverlässigste Weg. Dabei erlauben wir Ihre Domain direkt.
 
-## Auf dem Server ausführen
-Den ganzen Block auf einmal einfügen:
+## Auf dem Server ausführen (ganzer Block auf einmal)
 
 ```text
 cd ~/bbn-consulting-website
@@ -15,16 +15,20 @@ export default defineConfig({
     server: { entry: "server" },
   },
   vite: {
-    preview: { allowedHosts: ["bbm-consult.solutions", "www.bbm-consult.solutions"] },
     server: { allowedHosts: ["bbm-consult.solutions", "www.bbm-consult.solutions"] },
+    preview: { allowedHosts: ["bbm-consult.solutions", "www.bbm-consult.solutions"] },
   },
 });
 EOF
-bun run build
-pm2 restart bbn-consulting-website
+pm2 delete bbn-consulting-website
+pm2 start "$HOME/.bun/bin/bun" --name bbn-consulting-website -- run dev --host 0.0.0.0 --port 8080
+pm2 save
 ```
 
 Danach https://bbm-consult.solutions neu laden.
 
+## Empfehlung
+Schneller, sicherer und ohne Serverpflege: in Lovable auf „Veröffentlichen“ klicken und bbm-consult.solutions dort als eigene Domain verbinden.
+
 ## Im Projekt
-Ich nehme dieselbe Änderung auch hier im Projekt vor. So bleibt sie beim nächsten Übertragen erhalten.
+Dieselbe Domain-Freigabe trage ich auch hier ein, damit sie beim nächsten Übertragen erhalten bleibt.
