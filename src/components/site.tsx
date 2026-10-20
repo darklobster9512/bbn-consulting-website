@@ -3,37 +3,51 @@ import { useEffect, useRef, useState, type ReactNode, type ComponentType } from 
 import { Menu, X, ChevronRight, FileText, Info, Mail, Globe, Phone, MapPin, ArrowRight, ArrowUp, Quote, Newspaper } from "lucide-react";
 import { company } from "@/lib/company";
 import { photos } from "@/lib/photos";
+import { useLang, type Lang } from "@/lib/i18n";
+
+const ui = {
+  de: { quote: "Beratung anfragen", call: "Anrufen", mail: "E-Mail", menu: "Menü", tagline: "Unternehmensberatung aus Hamburg", more: "Mehr erfahren", contact: "Kontakt", tel: "Tel.", quick: "Schnellkontakt", news: "Aktuelles", newsItems: [["Okt 2026", "Neuer Internetauftritt der bbm-consulting GmbH online."], ["Sep 2026", "Verstärkung im Bereich Prozessberatung – wir stellen ein."]], request: "Anfrage", top: "Nach oben", services: "Leistungen", serviceItems: ["Strategieberatung", "Managementberatung", "Organisationsentwicklung", "Interim-Management"], legal: "Rechtliches", legalItems: ["Kontakt", "Karriere", "Impressum", "Datenschutz"], vat: "USt-IdNr.", court: "Amtsgericht Hamburg" },
+  en: { quote: "Request consultation", call: "Call", mail: "Email", menu: "Menu", tagline: "Management consultancy from Hamburg", more: "Learn more", contact: "Contact", tel: "Phone", quick: "Quick contact", news: "News", newsItems: [["Oct 2026", "New website of bbm-consulting GmbH is online."], ["Sep 2026", "Growing our process consulting team – we are hiring."]], request: "Enquiry", top: "Back to top", services: "Services", serviceItems: ["Strategy consulting", "Management consulting", "Organisational development", "Interim management"], legal: "Legal", legalItems: ["Contact", "Careers", "Legal notice", "Privacy policy"], vat: "VAT ID", court: "Local Court Hamburg" },
+};
+const useUi = () => ui[useLang().lang];
 
 type Icon = ComponentType<{ className?: string }>;
 
 const nav = [
-  { to: "/", label: "Home" },
-  { to: "/ueber-uns", label: "Über uns" },
-  { to: "/leistungen", label: "Leistungen" },
-  { to: "/karriere", label: "Karriere" },
-  { to: "/referenzen", label: "Referenzen" },
-  { to: "/kontakt", label: "Kontakt" },
+  { to: "/", label: "Home", en: "Home" },
+  { to: "/ueber-uns", label: "Über uns", en: "About us" },
+  { to: "/leistungen", label: "Leistungen", en: "Services" },
+  { to: "/karriere", label: "Karriere", en: "Careers" },
+  { to: "/referenzen", label: "Referenzen", en: "References" },
+  { to: "/kontakt", label: "Kontakt", en: "Contact" },
 ] as const;
 
+const labelsEn: Record<string, string> = {
+  "/ueber-uns": "About us", "/leistungen": "Services", "/karriere": "Careers", "/referenzen": "References",
+  "/kontakt": "Contact", "/impressum": "Legal notice", "/datenschutz": "Privacy policy",
+};
 const labels: Record<string, string> = {
   "/ueber-uns": "Über uns", "/leistungen": "Leistungen", "/karriere": "Karriere", "/referenzen": "Referenzen",
   "/kontakt": "Kontakt", "/impressum": "Impressum", "/datenschutz": "Datenschutz",
 };
 
 function TopBar() {
+  const { lang, setLang } = useLang();
+  const b = (l: Lang) => <button onClick={() => setLang(l)} aria-pressed={lang === l} className={`hover:underline ${lang === l ? "font-bold" : ""}`}>{l}</button>;
   return (
     <div className="hidden border-b border-primary-dark bg-primary-dark text-[12px] text-primary-foreground md:block">
       <div className="wrap flex h-8 items-center gap-6">
         <span className="flex items-center gap-1.5"><MapPin className="h-3 w-3" />{company.street}, {company.city}</span>
         <a href={`tel:${company.phone}`} className="flex items-center gap-1.5 hover:underline"><Phone className="h-3 w-3" />{company.phone}</a>
         <a href={`mailto:${company.mail.kontakt}`} className="flex items-center gap-1.5 hover:underline"><Mail className="h-3 w-3" />{company.mail.kontakt}</a>
-        <span className="ml-auto flex items-center gap-1"><Globe className="h-3 w-3" /><b>de</b>/en</span>
+        <span className="ml-auto flex items-center gap-1"><Globe className="h-3 w-3" />{b("de")}/{b("en")}</span>
       </div>
     </div>
   );
 }
 
 export function Header() {
+  const t = useUi(); const { lang } = useLang();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const path = useRouterState({ select: (s) => s.location.pathname });
@@ -56,25 +70,25 @@ export function Header() {
           {nav.map((n) => (
             <Link key={n.to} to={n.to} activeOptions={{ exact: true }}
               className="relative py-1 text-[13px] after:absolute after:inset-x-0 after:-bottom-0.5 after:h-0.5 after:origin-left after:scale-x-0 after:bg-primary-foreground after:transition-transform hover:after:scale-x-100 data-[status=active]:font-semibold data-[status=active]:after:scale-x-100">
-              {n.label}
+              {lang === "en" ? n.en : n.label}
             </Link>
           ))}
         </nav>
-        <Link to="/kontakt" className="slant ml-auto hidden bg-background px-6 py-2 text-[13px] font-semibold text-primary transition hover:bg-accent lg:block">Beratung anfragen</Link>
-        <button className="-mr-2 ml-auto p-2 lg:hidden" aria-label="Menü" aria-expanded={open} onClick={() => setOpen(!open)}>{open ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}</button>
+        <Link to="/kontakt" className="slant ml-auto hidden bg-background px-6 py-2 text-[13px] font-semibold text-primary transition hover:bg-accent lg:block">{t.quote}</Link>
+        <button className="-mr-2 ml-auto p-2 lg:hidden" aria-label={t.menu} aria-expanded={open} onClick={() => setOpen(!open)}>{open ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}</button>
       </div>
       {open && (
         <div className="fixed inset-x-0 bottom-0 top-16 overflow-y-auto bg-primary lg:hidden">
           <nav className="wrap flex flex-col border-t border-primary-dark">
             {nav.map((n) => (
               <Link key={n.to} to={n.to} activeOptions={{ exact: true }} className="flex items-center justify-between border-b border-primary-dark py-4 text-lg data-[status=active]:font-bold">
-                {n.label}<ChevronRight className="h-5 w-5" />
+                {lang === "en" ? n.en : n.label}<ChevronRight className="h-5 w-5" />
               </Link>
             ))}
           </nav>
           <div className="wrap mt-6 grid grid-cols-2 gap-2">
-            <a href={`tel:${company.phone}`} className="slant flex items-center justify-center gap-2 bg-background py-3 font-semibold text-primary"><Phone className="h-4 w-4" />Anrufen</a>
-            <a href={`mailto:${company.mail.kontakt}`} className="slant flex items-center justify-center gap-2 bg-background py-3 font-semibold text-primary"><Mail className="h-4 w-4" />E-Mail</a>
+            <a href={`tel:${company.phone}`} className="slant flex items-center justify-center gap-2 bg-background py-3 font-semibold text-primary"><Phone className="h-4 w-4" />{t.call}</a>
+            <a href={`mailto:${company.mail.kontakt}`} className="slant flex items-center justify-center gap-2 bg-background py-3 font-semibold text-primary"><Mail className="h-4 w-4" />{t.mail}</a>
           </div>
           <p className="wrap mt-6 pb-8 text-[13px] opacity-90">{company.name}<br />{company.street}, {company.city}</p>
         </div>
@@ -86,12 +100,13 @@ export function Header() {
 function Breadcrumb() {
   const matches = useMatches();
   const path = matches[matches.length - 1]?.pathname ?? "/";
+  const { lang } = useLang(); const t = useUi();
   return (
     <div className="bg-footer text-[12px] text-footer-foreground">
       <div className="wrap flex h-9 items-center gap-2">
         <Link to="/" className="hover:underline">Home</Link>
-        {path !== "/" && <><ChevronRight className="h-3 w-3 text-footer-muted" /><span className="font-semibold">{labels[path] ?? ""}</span></>}
-        <span className="ml-auto hidden text-footer-muted sm:block">Unternehmensberatung aus Hamburg</span>
+        {path !== "/" && <><ChevronRight className="h-3 w-3 text-footer-muted" /><span className="font-semibold">{(lang === "en" ? labelsEn : labels)[path] ?? ""}</span></>}
+        <span className="ml-auto hidden text-footer-muted sm:block">{t.tagline}</span>
       </div>
     </div>
   );
@@ -143,9 +158,10 @@ export function SideBox({ icon = Info, title, children, framed = true }: { icon?
   );
 }
 
-export function Tile({ title, image, text, to = "/leistungen", href, cta = "Mehr erfahren" }: { title: string; image: string; text: string; to?: "/leistungen" | "/karriere" | "/kontakt" | "/ueber-uns"; href?: string; cta?: string }) {
+export function Tile({ title, image, text, to = "/leistungen", href, cta }: { title: string; image: string; text: string; to?: "/leistungen" | "/karriere" | "/kontakt" | "/ueber-uns"; href?: string; cta?: string }) {
+  const t = useUi();
   const btn = "group/btn mt-auto flex min-h-11 items-center justify-center gap-2 border border-primary py-2 text-[13px] text-primary transition hover:bg-primary hover:text-primary-foreground";
-  const inner = <>{cta}<ArrowRight className="h-3.5 w-3.5 transition-transform group-hover/btn:translate-x-1" /></>;
+  const inner = <>{cta ?? t.more}<ArrowRight className="h-3.5 w-3.5 transition-transform group-hover/btn:translate-x-1" /></>;
   return (
     <Reveal className="h-full">
       <article className="group flex h-full flex-col">
@@ -222,13 +238,14 @@ export function Timeline({ items }: { items: [string, string][] }) {
 }
 
 export function ContactBox({ mobile = false }: { mobile?: boolean }) {
+  const t = useUi();
   return (
     <div className={mobile ? "" : "hidden md:block"}>
-    <SideBox icon={Mail} title="Kontakt">
+    <SideBox icon={Mail} title={t.contact}>
       <p><b>{company.name}</b><br />{company.street}<br />{company.city}</p>
-      <p className="mt-3">Tel.: {company.phone}<br /><a className="text-primary" href={`mailto:${company.mail.kontakt}`}>{company.mail.kontakt}</a></p>
+      <p className="mt-3">{t.tel}: {company.phone}<br /><a className="text-primary" href={`mailto:${company.mail.kontakt}`}>{company.mail.kontakt}</a></p>
       <Link to="/kontakt" className="mt-3 flex items-center justify-center gap-2 bg-primary py-2 font-semibold text-primary-foreground transition hover:bg-primary-dark">
-        Schnellkontakt <ArrowRight className="h-3.5 w-3.5" />
+        {t.quick} <ArrowRight className="h-3.5 w-3.5" />
       </Link>
     </SideBox>
     </div>
@@ -236,10 +253,11 @@ export function ContactBox({ mobile = false }: { mobile?: boolean }) {
 }
 
 export function NewsBox() {
+  const t = useUi();
   return (
-    <SideBox icon={Newspaper} title="Aktuelles">
+    <SideBox icon={Newspaper} title={t.news}>
       <ul className="space-y-3">
-        {[["Okt 2026", "Neuer Internetauftritt der bbm-consulting GmbH online."], ["Sep 2026", "Verstärkung im Bereich Prozessberatung – wir stellen ein."]].map(([d, t]) => (
+        {t.newsItems.map(([d, t]) => (
           <li key={d} className="border-b pb-2 last:border-0"><div className="text-[11px] font-semibold text-primary">{d}</div>{t}</li>
         ))}
       </ul>
@@ -261,48 +279,50 @@ export function PageLayout({ children, side, banner = true }: { children: ReactN
 }
 
 export function MobileBar() {
+  const t = useUi();
   const cell = "slant flex flex-1 flex-col items-center justify-center gap-0.5 bg-primary py-2 text-[11px] font-semibold text-primary-foreground";
   return (
     <div className="fixed inset-x-0 bottom-0 z-40 flex gap-1 border-t border-primary-dark bg-background p-1 pb-[max(0.25rem,env(safe-area-inset-bottom))] md:hidden">
-      <a href={`tel:${company.phone}`} className={cell}><Phone className="h-4 w-4" />Anrufen</a>
-      <a href={`mailto:${company.mail.kontakt}`} className={cell}><Mail className="h-4 w-4" />E-Mail</a>
-      <Link to="/kontakt" className={cell}><ArrowRight className="h-4 w-4" />Anfrage</Link>
+      <a href={`tel:${company.phone}`} className={cell}><Phone className="h-4 w-4" />{t.call}</a>
+      <a href={`mailto:${company.mail.kontakt}`} className={cell}><Mail className="h-4 w-4" />{t.mail}</a>
+      <Link to="/kontakt" className={cell}><ArrowRight className="h-4 w-4" />{t.request}</Link>
     </div>
   );
 }
 
 export function Footer() {
+  const t = useUi();
   return (
     <footer className="relative bg-footer pb-16 text-footer-foreground md:pb-0">
-      <button aria-label="Nach oben" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      <button aria-label={t.top} onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         className="slant absolute -top-5 right-4 md:right-[max(1rem,calc((100vw-1000px)/2+1rem))] flex h-10 w-14 items-center justify-center bg-primary text-primary-foreground transition hover:bg-primary-dark">
         <ArrowUp className="h-4 w-4" />
       </button>
       <div className="wrap grid gap-6 py-10 text-[13px] sm:grid-cols-3 sm:gap-8">
         <div>
           <h4 className="mb-3 font-bold">{company.name}</h4>
-          <p className="text-footer-muted">{company.street}<br />D-{company.city}<br />Tel.: {company.phone}<br />{company.mail.info}</p>
+          <p className="text-footer-muted">{company.street}<br />D-{company.city}<br />{t.tel}: {company.phone}<br />{company.mail.info}</p>
         </div>
         <div>
-          <h4 className="mb-3 font-bold">Leistungen</h4>
+          <h4 className="mb-3 font-bold">{t.services}</h4>
           <ul className="space-y-1 text-footer-muted">
-            {["Strategieberatung", "Managementberatung", "Organisationsentwicklung", "Interim-Management"].map((l) => (
+            {t.serviceItems.map((l) => (
               <li key={l}><Link to="/leistungen" className="hover:text-footer-foreground">{l}</Link></li>
             ))}
           </ul>
         </div>
         <div>
-          <h4 className="mb-3 font-bold">Rechtliches</h4>
+          <h4 className="mb-3 font-bold">{t.legal}</h4>
           <ul className="space-y-1 text-footer-muted">
-            {([["/kontakt", "Kontakt"], ["/karriere", "Karriere"], ["/impressum", "Impressum"], ["/datenschutz", "Datenschutz"]] as const).map(([to, l]) => (
-              <li key={to}><Link to={to} className="hover:text-footer-foreground">{l}</Link></li>
+            {(["/kontakt", "/karriere", "/impressum", "/datenschutz"] as const).map((to, i) => (
+              <li key={to}><Link to={to} className="hover:text-footer-foreground">{t.legalItems[i]}</Link></li>
             ))}
           </ul>
         </div>
       </div>
       <div className="border-t border-footer-muted/30">
         <div className="wrap flex flex-wrap items-center justify-between gap-4 py-4 text-[12px] text-footer-muted">
-          <span className="leading-relaxed">© {new Date().getFullYear()} {company.name}<span className="hidden sm:inline"> · </span><br className="sm:hidden" />{company.register}, {company.court} · USt-IdNr. {company.vat}</span>
+          <span className="leading-relaxed">© {new Date().getFullYear()} {company.name}<span className="hidden sm:inline"> · </span><br className="sm:hidden" />{company.register}, {t.court} · {t.vat} {company.vat}</span>
           <div className="flex gap-1">
             {["in", "X"].map((s) => <span key={s} className="slant flex h-9 w-12 items-center justify-center bg-primary font-bold text-primary-foreground">{s}</span>)}
           </div>
