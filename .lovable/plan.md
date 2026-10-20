@@ -1,22 +1,24 @@
-# Eigener Server: Website startet nicht ("vite: not found")
+# Eigener Server: Website startet nicht
 
 ## Ursache
-Auf dem Server fehlen die installierten Programmpakete (Ordner `node_modules`). PM2 startet deshalb `vite dev` und bricht sofort ab (Code 127). Am Website-Code muss nichts geändert werden.
+Das Projekt nutzt **Bun** statt npm (Datei `bun.lock`). npm kommt mit dieser Paketliste nicht klar ("edgesOut"-Fehler), deshalb wurde nichts installiert und `vite` fehlt weiterhin. Am Website-Code muss nichts geändert werden.
 
 ## Lösung (auf dem Server ausführen)
 
 ```text
 cd ~/bbn-consulting-website
-npm install                 # Pakete installieren
-npm run build               # fertige Version bauen
+curl -fsSL https://bun.sh/install | bash
+source ~/.bashrc
+rm -rf node_modules package-lock.json
+bun install
+bun run build
 pm2 delete bbn-consulting-website
-pm2 start npm --name bbn-consulting-website -- run preview -- --host 0.0.0.0 --port 8080
+pm2 start bun --name bbn-consulting-website -- run preview --host 0.0.0.0 --port 8080
 pm2 save
 ```
 
-Hinweise:
-- Node.js 20 oder neuer nötig (`node -v` prüfen).
-- `vite dev` ist nur für die Entwicklung gedacht; für den Live-Betrieb `build` + `preview` (oder Veröffentlichen über Lovable) verwenden.
-- Logs prüfen mit `pm2 logs bbn-consulting-website`.
+Danach mit `pm2 logs bbn-consulting-website` prüfen; die Seite läuft auf Port 8080.
+
+Hinweis: Falls `bun run build` oder `preview` noch Fehler zeigt, die Ausgabe hier einfügen. Einfachster Weg für den Live-Betrieb bleibt das Veröffentlichen über Lovable inklusive eigener Domain bbm-consult.de.
 
 Keine Änderungen am Projekt nötig.
