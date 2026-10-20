@@ -12,11 +12,11 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DatenschutzRouteImport } from './routes/datenschutz'
 import { Route as ImpressumRouteImport } from './routes/impressum'
-import { Route as KarriereRouteImport } from './routes/karriere'
 import { Route as KontaktRouteImport } from './routes/kontakt'
 import { Route as LeistungenRouteImport } from './routes/leistungen'
 import { Route as ReferenzenRouteImport } from './routes/referenzen'
 import { Route as UeberUnsRouteImport } from './routes/ueber-uns'
+import { Route as KarriereIndexRouteImport } from './routes/karriere.index'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -31,11 +31,6 @@ const DatenschutzRoute = DatenschutzRouteImport.update({
 const ImpressumRoute = ImpressumRouteImport.update({
   id: '/impressum',
   path: '/impressum',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const KarriereRoute = KarriereRouteImport.update({
-  id: '/karriere',
-  path: '/karriere',
   getParentRoute: () => rootRouteImport,
 } as any)
 const KontaktRoute = KontaktRouteImport.update({
@@ -58,37 +53,42 @@ const UeberUnsRoute = UeberUnsRouteImport.update({
   path: '/ueber-uns',
   getParentRoute: () => rootRouteImport,
 } as any)
+const KarriereIndexRoute = KarriereIndexRouteImport.update({
+  id: '/karriere/',
+  path: '/karriere/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/datenschutz': typeof DatenschutzRoute
   '/impressum': typeof ImpressumRoute
-  '/karriere': typeof KarriereRoute
   '/kontakt': typeof KontaktRoute
   '/leistungen': typeof LeistungenRoute
   '/referenzen': typeof ReferenzenRoute
   '/ueber-uns': typeof UeberUnsRoute
+  '/karriere/': typeof KarriereIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/datenschutz': typeof DatenschutzRoute
   '/impressum': typeof ImpressumRoute
-  '/karriere': typeof KarriereRoute
   '/kontakt': typeof KontaktRoute
   '/leistungen': typeof LeistungenRoute
   '/referenzen': typeof ReferenzenRoute
   '/ueber-uns': typeof UeberUnsRoute
+  '/karriere': typeof KarriereIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/datenschutz': typeof DatenschutzRoute
   '/impressum': typeof ImpressumRoute
-  '/karriere': typeof KarriereRoute
   '/kontakt': typeof KontaktRoute
   '/leistungen': typeof LeistungenRoute
   '/referenzen': typeof ReferenzenRoute
   '/ueber-uns': typeof UeberUnsRoute
+  '/karriere/': typeof KarriereIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -96,42 +96,42 @@ export interface FileRouteTypes {
     | '/'
     | '/datenschutz'
     | '/impressum'
-    | '/karriere'
     | '/kontakt'
     | '/leistungen'
     | '/referenzen'
     | '/ueber-uns'
+    | '/karriere/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/datenschutz'
     | '/impressum'
-    | '/karriere'
     | '/kontakt'
     | '/leistungen'
     | '/referenzen'
     | '/ueber-uns'
+    | '/karriere'
   id:
     | '__root__'
     | '/'
     | '/datenschutz'
     | '/impressum'
-    | '/karriere'
     | '/kontakt'
     | '/leistungen'
     | '/referenzen'
     | '/ueber-uns'
+    | '/karriere/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DatenschutzRoute: typeof DatenschutzRoute
   ImpressumRoute: typeof ImpressumRoute
-  KarriereRoute: typeof KarriereRoute
   KontaktRoute: typeof KontaktRoute
   LeistungenRoute: typeof LeistungenRoute
   ReferenzenRoute: typeof ReferenzenRoute
   UeberUnsRoute: typeof UeberUnsRoute
+  KarriereIndexRoute: typeof KarriereIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -155,13 +155,6 @@ declare module '@tanstack/react-router' {
       path: '/impressum'
       fullPath: '/impressum'
       preLoaderRoute: typeof ImpressumRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/karriere': {
-      id: '/karriere'
-      path: '/karriere'
-      fullPath: '/karriere'
-      preLoaderRoute: typeof KarriereRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/kontakt': {
@@ -192,6 +185,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UeberUnsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/karriere/': {
+      id: '/karriere/'
+      path: '/karriere'
+      fullPath: '/karriere/'
+      preLoaderRoute: typeof KarriereIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -199,11 +199,11 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DatenschutzRoute: DatenschutzRoute,
   ImpressumRoute: ImpressumRoute,
-  KarriereRoute: KarriereRoute,
   KontaktRoute: KontaktRoute,
   LeistungenRoute: LeistungenRoute,
   ReferenzenRoute: ReferenzenRoute,
   UeberUnsRoute: UeberUnsRoute,
+  KarriereIndexRoute: KarriereIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
