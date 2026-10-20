@@ -13,7 +13,7 @@ const T = {
   de: {
     title: "Datenschutzerklärung | bbm-consulting GmbH Hamburg", h: "Datenschutzerklärung", note: "",
     s: [
-      ["1. Verantwortlicher", `${c.name}, ${c.street}, ${c.city}\nVertreten durch den Geschäftsführer ${c.ceo}\nTelefon: ${c.phone} · E-Mail: ${c.mail.info}`],
+      ["1. Verantwortlicher", `${c.name}, ${c.street}, ${c.city}\nVertreten durch den Geschäftsführer ${c.ceo}\nE-Mail: ${c.mail.info}`],
       ["2. Kontakt in Datenschutzfragen", `Bei Fragen zum Datenschutz wenden Sie sich bitte an: ${c.mail.datenschutz}`],
       ["3. Allgemeines zur Datenverarbeitung", "Wir verarbeiten personenbezogene Daten nur, soweit dies zur Bereitstellung einer funktionsfähigen Website sowie unserer Inhalte und Leistungen erforderlich ist. Rechtsgrundlagen sind insbesondere Art. 6 Abs. 1 lit. a, b, c und f DSGVO."],
       ["4. Hosting und Server-Logfiles", "Beim Aufruf unserer Website werden durch den Hosting-Anbieter automatisch Informationen erfasst (IP-Adresse, Datum und Uhrzeit, aufgerufene Seite, Browser, Betriebssystem, Referrer-URL). Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO zur Gewährleistung eines sicheren und stabilen Betriebs. Die Daten werden gelöscht, sobald sie nicht mehr erforderlich sind."],
@@ -30,7 +30,7 @@ const T = {
   en: {
     title: "Privacy Policy | bbm-consulting GmbH Hamburg", h: "Privacy policy", note: "This English translation is provided for convenience only. The German version is legally binding.",
     s: [
-      ["1. Controller", `${c.name}, ${c.street}, ${c.city}\nRepresented by the managing director ${c.ceo}\nPhone: ${c.phone} · Email: ${c.mail.info}`],
+      ["1. Controller", `${c.name}, ${c.street}, ${c.city}\nRepresented by the managing director ${c.ceo}\nEmail: ${c.mail.info}`],
       ["2. Data protection contact", `For questions about data protection, please contact: ${c.mail.datenschutz}`],
       ["3. General information on data processing", "We only process personal data to the extent necessary to provide a functional website and our content and services. The legal bases are in particular Art. 6 (1) (a), (b), (c) and (f) GDPR."],
       ["4. Hosting and server log files", "When you visit our website, the hosting provider automatically collects information (IP address, date and time, page accessed, browser, operating system, referrer URL). Processing is based on Art. 6 (1) (f) GDPR to ensure secure and stable operation. The data is deleted as soon as it is no longer required."],
