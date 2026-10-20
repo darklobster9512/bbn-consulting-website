@@ -5,7 +5,7 @@ import { photos } from "@/lib/photos";
 import { useT } from "@/lib/i18n";
 
 export const Route = createFileRoute("/ueber-uns")({
-  head: () => ({ meta: meta("Über uns – bbm-consulting GmbH", "Die bbm-consulting GmbH aus Hamburg: unsere Werte, unsere Geschichte und unsere Geschäftsführung.") }),
+  head: () => ({ meta: meta("Über uns – inhabergeführte Beratung aus Hamburg | bbm-consulting", "Lernen Sie die bbm-consulting GmbH kennen: inhabergeführte Unternehmensberatung aus Hamburg mit klaren Werten, langjähriger Erfahrung und persönlicher Betreuung.", "/ueber-uns") }),
   component: Page,
 });
 

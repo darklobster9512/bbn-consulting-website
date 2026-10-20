@@ -6,7 +6,7 @@ import { company, meta } from "@/lib/company";
 import { useT } from "@/lib/i18n";
 
 export const Route = createFileRoute("/kontakt")({
-  head: () => ({ meta: meta("Kontakt – bbm-consulting GmbH", "Kontakt zur bbm-consulting GmbH, Ruhrstr. 126, 22761 Hamburg – telefonisch, per E-Mail oder über das Kontaktformular.") }),
+  head: () => ({ meta: meta("Kontakt – Erstgespräch vereinbaren | bbm-consulting Hamburg", "Vereinbaren Sie ein unverbindliches Erstgespräch mit der bbm-consulting GmbH, Ruhrstr. 126, 22761 Hamburg – per Telefon, E-Mail oder Kontaktformular.", "/kontakt") }),
   component: Page,
 });
 

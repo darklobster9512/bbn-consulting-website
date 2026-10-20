@@ -4,7 +4,7 @@ import { PageLayout, SlantTitle } from "@/components/site";
 import { useT } from "@/lib/i18n";
 
 export const Route = createFileRoute("/datenschutz")({
-  head: () => ({ meta: meta("Datenschutzerklärung – bbm-consulting GmbH", "Informationen zur Verarbeitung personenbezogener Daten gemäß DSGVO bei der bbm-consulting GmbH.") }),
+  head: () => ({ meta: meta("Datenschutzerklärung | bbm-consulting GmbH Hamburg", "Datenschutzerklärung der bbm-consulting GmbH: wie wir personenbezogene Daten gemäß DSGVO verarbeiten und welche Rechte Sie als betroffene Person haben.", "/datenschutz") }),
   component: Page,
 });
 

@@ -6,7 +6,7 @@ import { photos } from "@/lib/photos";
 import { useT } from "@/lib/i18n";
 
 export const Route = createFileRoute("/")({
-  head: () => ({ meta: meta("bbm-consulting GmbH – Unternehmensberatung Hamburg", "Unabhängige Unternehmensberatung aus Hamburg: Strategie-, Management- und Organisationsberatung sowie Interim- und Projektmanagement.") }),
+  head: () => ({ meta: meta("Unternehmensberatung Hamburg | bbm-consulting GmbH", "Unabhängige Unternehmensberatung in Hamburg: Strategie, Management, Organisation, Prozessoptimierung sowie Interim- und Projektmanagement für den Mittelstand.", "/") }),
   component: Index,
 });
 

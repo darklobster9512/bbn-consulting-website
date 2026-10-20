@@ -4,7 +4,7 @@ import { PageLayout, SlantTitle } from "@/components/site";
 import { useT } from "@/lib/i18n";
 
 export const Route = createFileRoute("/impressum")({
-  head: () => ({ meta: meta("Impressum – bbm-consulting GmbH", "Impressum und Anbieterkennzeichnung der bbm-consulting GmbH, Hamburg.") }),
+  head: () => ({ meta: meta("Impressum | bbm-consulting GmbH Hamburg", "Impressum und Anbieterkennzeichnung der bbm-consulting GmbH, Ruhrstr. 126, 22761 Hamburg – Geschäftsführung, Handelsregister und Umsatzsteuer-ID.", "/impressum") }),
   component: Page,
 });
 

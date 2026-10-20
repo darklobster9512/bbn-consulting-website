@@ -5,7 +5,7 @@ import { meta } from "@/lib/company";
 import { useT } from "@/lib/i18n";
 
 export const Route = createFileRoute("/leistungen")({
-  head: () => ({ meta: meta("Leistungen – bbm-consulting GmbH", "Strategie-, Management- und Organisationsberatung, Prozessoptimierung, Interim- und Projektmanagement aus Hamburg.") }),
+  head: () => ({ meta: meta("Strategie-, Management- & Prozessberatung | bbm-consulting", "Unsere Leistungen: Strategieberatung, Managementberatung, Organisationsentwicklung, Prozessoptimierung, Interim- und Projektmanagement – pragmatisch und messbar.", "/leistungen") }),
   component: Page,
 });
 

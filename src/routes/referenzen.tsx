@@ -4,7 +4,7 @@ import { meta } from "@/lib/company";
 import { useT } from "@/lib/i18n";
 
 export const Route = createFileRoute("/referenzen")({
-  head: () => ({ meta: meta("Referenzen – bbm-consulting GmbH", "Branchen und ausgewählte Projekte der bbm-consulting GmbH aus Hamburg.") }),
+  head: () => ({ meta: meta("Referenzen & Projekte | bbm-consulting Hamburg", "Branchen und ausgewählte Beratungsprojekte der bbm-consulting GmbH: von Strategie über Restrukturierung bis Prozessoptimierung im Mittelstand.", "/referenzen") }),
   component: Page,
 });
 
