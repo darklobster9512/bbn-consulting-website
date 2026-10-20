@@ -15,7 +15,7 @@ const T = {
     s: [
       ["Angaben gemäß § 5 DDG", `${c.name}\n${c.street}\n${c.city}\nDeutschland`],
       ["Vertreten durch", `Geschäftsführer: ${c.ceo}\nProkuristen: ${c.prokura.join(", ")}`],
-      ["Kontakt", `Telefon: ${c.phone}\nE-Mail: ${c.mail.info}\nWeb: ${c.domain}`],
+      ["Kontakt", `E-Mail: ${c.mail.info}\nWeb: ${c.domain}`],
       ["Registereintrag", `Registergericht: ${c.court}\nRegisternummer: ${c.register}`],
       ["Umsatzsteuer-ID", `Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG: ${c.vat}`],
       ["Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV", `${c.ceo}, ${c.street}, ${c.city}`],
@@ -30,7 +30,7 @@ const T = {
     s: [
       ["Information pursuant to § 5 DDG", `${c.name}\n${c.street}\n${c.city}\nGermany`],
       ["Represented by", `Managing director: ${c.ceo}\nAuthorised signatories (Prokura): ${c.prokura.join(", ")}`],
-      ["Contact", `Phone: ${c.phone}\nEmail: ${c.mail.info}\nWeb: ${c.domain}`],
+      ["Contact", `Email: ${c.mail.info}\nWeb: ${c.domain}`],
       ["Commercial register", `Register court: Local Court Hamburg\nRegister number: ${c.register}`],
       ["VAT ID", `VAT identification number pursuant to § 27a UStG: ${c.vat}`],
       ["Responsible for content pursuant to § 18 (2) MStV", `${c.ceo}, ${c.street}, ${c.city}`],
