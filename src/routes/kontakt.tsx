@@ -6,7 +6,7 @@ import { company, meta } from "@/lib/company";
 import { useT } from "@/lib/i18n";
 
 export const Route = createFileRoute("/kontakt")({
-  head: () => ({ meta: meta("Kontakt – bbm-consulting GmbH", "Kontakt zur bbm-consulting GmbH, Ruhrstr. 126, 22761 Hamburg – telefonisch, per E-Mail oder über das Kontaktformular.") }),
+  head: () => ({ meta: meta("Kontakt – Erstgespräch vereinbaren | bbm-consulting Hamburg", "Vereinbaren Sie ein unverbindliches Erstgespräch mit der bbm-consulting GmbH, Ruhrstr. 126, 22761 Hamburg – per Telefon, E-Mail oder Kontaktformular.", "/kontakt") }),
   component: Page,
 });
 
@@ -14,14 +14,14 @@ const input = "mt-1 w-full border border-input px-3 py-3 text-[16px] md:py-2 md:
 
 const T = {
   de: {
-    title: "Kontakt – bbm-consulting GmbH", h: "Kontakt", side: "E-Mail-Adressen", general: "Allgemein", req: "Anfragen", job: "Bewerbung", privacy: "Datenschutz",
+    title: "Kontakt – Erstgespräch vereinbaren | bbm-consulting Hamburg", h: "Kontakt", side: "E-Mail-Adressen", general: "Allgemein", req: "Anfragen", job: "Bewerbung", privacy: "Datenschutz",
     intro: "Sie haben Fragen oder wünschen ein persönliches Gespräch? Schreiben Sie uns – wir melden uns zeitnah bei Ihnen.",
     map: "Standort bbm-consulting", name: "Name", email: "E-Mail", company: "Unternehmen", message: "Nachricht", send: "Absenden",
     consent: "Ich habe die Datenschutzerklärung zur Kenntnis genommen und stimme der Verarbeitung meiner Angaben zur Bearbeitung der Anfrage zu.",
     subject: "Anfrage über Website",
   },
   en: {
-    title: "Contact – bbm-consulting GmbH", h: "Contact", side: "Email addresses", general: "General", req: "Enquiries", job: "Applications", privacy: "Data protection",
+    title: "Contact – Book an Initial Meeting | bbm-consulting Hamburg", h: "Contact", side: "Email addresses", general: "General", req: "Enquiries", job: "Applications", privacy: "Data protection",
     intro: "Do you have questions or would you like a personal meeting? Write to us – we will get back to you promptly.",
     map: "Location bbm-consulting", name: "Name", email: "Email", company: "Company", message: "Message", send: "Send",
     consent: "I have read the privacy policy and agree to my details being processed to handle my enquiry.",

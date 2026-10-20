@@ -6,13 +6,13 @@ import { photos } from "@/lib/photos";
 import { useT } from "@/lib/i18n";
 
 export const Route = createFileRoute("/")({
-  head: () => ({ meta: meta("bbm-consulting GmbH – Unternehmensberatung Hamburg", "Unabhängige Unternehmensberatung aus Hamburg: Strategie-, Management- und Organisationsberatung sowie Interim- und Projektmanagement.") }),
+  head: () => ({ meta: meta("Unternehmensberatung Hamburg | bbm-consulting GmbH", "Unabhängige Unternehmensberatung in Hamburg: Strategie, Management, Organisation, Prozessoptimierung sowie Interim- und Projektmanagement für den Mittelstand.", "/") }),
   component: Index,
 });
 
 const T = {
   de: {
-    title: "bbm-consulting GmbH – Unternehmensberatung Hamburg",
+    title: "Unternehmensberatung Hamburg | bbm-consulting GmbH",
     events: "Termine & Veranstaltungen", noEvents: "Derzeit liegen keine zukünftigen Termine vor.",
     h1: "Willkommen bei bbm-consulting.", lead: "Hanseatische Beratung mit Weitblick",
     p1: "Die bbm-consulting GmbH mit Sitz in Hamburg erbringt Beratungs- und Managementdienstleistungen für mittelständische Unternehmen und Konzerne. Verlässlichkeit, Diskretion und unternehmerisches Denken prägen unsere Arbeit.",
@@ -33,7 +33,7 @@ const T = {
     jobsCta: "Zu den Stellen",
   },
   en: {
-    title: "bbm-consulting GmbH – Management Consultancy Hamburg",
+    title: "Management Consultancy Hamburg | bbm-consulting GmbH",
     events: "Dates & events", noEvents: "There are currently no upcoming events.",
     h1: "Welcome to bbm-consulting.", lead: "Hanseatic consulting with foresight",
     p1: "bbm-consulting GmbH, based in Hamburg, provides consulting and management services for medium-sized companies and corporate groups. Reliability, discretion and entrepreneurial thinking define our work.",

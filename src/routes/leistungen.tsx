@@ -5,7 +5,7 @@ import { meta } from "@/lib/company";
 import { useT } from "@/lib/i18n";
 
 export const Route = createFileRoute("/leistungen")({
-  head: () => ({ meta: meta("Leistungen – bbm-consulting GmbH", "Strategie-, Management- und Organisationsberatung, Prozessoptimierung, Interim- und Projektmanagement aus Hamburg.") }),
+  head: () => ({ meta: meta("Strategie-, Management- & Prozessberatung | bbm-consulting", "Unsere Leistungen: Strategieberatung, Managementberatung, Organisationsentwicklung, Prozessoptimierung, Interim- und Projektmanagement – pragmatisch und messbar.", "/leistungen") }),
   component: Page,
 });
 
@@ -14,7 +14,7 @@ type Item = { id: keyof typeof icons; t: string; d: string; b: string[]; n: stri
 
 const T: { de: { title: string; h: string; side: string; intro: string; benefit: string; items: Item[] }; en: { title: string; h: string; side: string; intro: string; benefit: string; items: Item[] } } = {
   de: {
-    title: "Leistungen – bbm-consulting GmbH", h: "Leistungen", side: "Unsere Leistungen", benefit: "Ihr Nutzen: ",
+    title: "Strategie-, Management- & Prozessberatung | bbm-consulting", h: "Leistungen", side: "Unsere Leistungen", benefit: "Ihr Nutzen: ",
     intro: "Von der strategischen Ausrichtung bis zur operativen Umsetzung: Wir erbringen Beratungs- und Managementdienstleistungen aus einer Hand – individuell auf die Anforderungen unserer Mandanten zugeschnitten.",
     items: [
       { id: "strategie", n: "Klarheit über Richtung und Prioritäten – und eine Roadmap, die Ihr Team trägt.", t: "Strategieberatung", d: "Wir entwickeln gemeinsam mit Ihnen eine tragfähige Unternehmensstrategie. Ausgangspunkt ist eine fundierte Analyse von Markt, Wettbewerb und eigener Position. Daraus leiten wir klare Ziele und eine umsetzbare Roadmap ab.", b: ["Markt- und Wettbewerbsanalyse", "Entwicklung von Geschäftsmodellen", "Strategische Roadmaps und Zielsysteme"] },
@@ -26,7 +26,7 @@ const T: { de: { title: string; h: string; side: string; intro: string; benefit:
     ],
   },
   en: {
-    title: "Services – bbm-consulting GmbH", h: "Services", side: "Our services", benefit: "Your benefit: ",
+    title: "Strategy, Management & Process Consulting | bbm-consulting", h: "Services", side: "Our services", benefit: "Your benefit: ",
     intro: "From strategic direction to operational implementation: we provide consulting and management services from a single source – tailored to the individual needs of our clients.",
     items: [
       { id: "strategie", n: "Clarity on direction and priorities – and a roadmap your team can carry.", t: "Strategy consulting", d: "Together with you, we develop a sustainable corporate strategy. The starting point is a thorough analysis of the market, competition and your own position. From this we derive clear goals and an actionable roadmap.", b: ["Market and competitor analysis", "Business model development", "Strategic roadmaps and target systems"] },

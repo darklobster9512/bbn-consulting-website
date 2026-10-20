@@ -4,13 +4,13 @@ import { meta } from "@/lib/company";
 import { useT } from "@/lib/i18n";
 
 export const Route = createFileRoute("/referenzen")({
-  head: () => ({ meta: meta("Referenzen – bbm-consulting GmbH", "Branchen und ausgewählte Projekte der bbm-consulting GmbH aus Hamburg.") }),
+  head: () => ({ meta: meta("Referenzen & Projekte | bbm-consulting Hamburg", "Branchen und ausgewählte Beratungsprojekte der bbm-consulting GmbH: von Strategie über Restrukturierung bis Prozessoptimierung im Mittelstand.", "/referenzen") }),
   component: Page,
 });
 
 const T = {
   de: {
-    title: "Referenzen – bbm-consulting GmbH", h: "Referenzen", p1: "Unsere Mandanten stammen aus unterschiedlichsten Branchen, unter anderem:",
+    title: "Referenzen & Projekte | bbm-consulting Hamburg", h: "Referenzen", p1: "Unsere Mandanten stammen aus unterschiedlichsten Branchen, unter anderem:",
     ind: ["Handel und Konsumgüter", "Logistik und Verkehr", "Industrie und Produktion", "Dienstleistung und Immobilien"],
     p2: "Aus Gründen der Vertraulichkeit nennen wir Mandanten nur mit deren ausdrücklicher Zustimmung. Gerne stellen wir im persönlichen Gespräch Kontakt zu Referenzkunden her.",
     h2: "Ausgewählte Projekte", c1: "Branche", c2: "Projekt",
@@ -22,7 +22,7 @@ const T = {
     ] as [string, string][],
   },
   en: {
-    title: "References – bbm-consulting GmbH", h: "References", p1: "Our clients come from a wide range of industries, including:",
+    title: "References & Projects | bbm-consulting Hamburg", h: "References", p1: "Our clients come from a wide range of industries, including:",
     ind: ["Retail and consumer goods", "Logistics and transport", "Industry and manufacturing", "Services and real estate"],
     p2: "For reasons of confidentiality, we only name clients with their express consent. We are happy to put you in touch with reference clients in a personal meeting.",
     h2: "Selected projects", c1: "Industry", c2: "Project",

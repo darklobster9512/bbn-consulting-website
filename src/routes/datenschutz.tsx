@@ -4,14 +4,14 @@ import { PageLayout, SlantTitle } from "@/components/site";
 import { useT } from "@/lib/i18n";
 
 export const Route = createFileRoute("/datenschutz")({
-  head: () => ({ meta: meta("Datenschutzerklärung – bbm-consulting GmbH", "Informationen zur Verarbeitung personenbezogener Daten gemäß DSGVO bei der bbm-consulting GmbH.") }),
+  head: () => ({ meta: meta("Datenschutzerklärung | bbm-consulting GmbH Hamburg", "Datenschutzerklärung der bbm-consulting GmbH: wie wir personenbezogene Daten gemäß DSGVO verarbeiten und welche Rechte Sie als betroffene Person haben.", "/datenschutz") }),
   component: Page,
 });
 
 const c = company;
 const T = {
   de: {
-    title: "Datenschutzerklärung – bbm-consulting GmbH", h: "Datenschutzerklärung", note: "",
+    title: "Datenschutzerklärung | bbm-consulting GmbH Hamburg", h: "Datenschutzerklärung", note: "",
     s: [
       ["1. Verantwortlicher", `${c.name}, ${c.street}, ${c.city}\nVertreten durch den Geschäftsführer ${c.ceo}\nTelefon: ${c.phone} · E-Mail: ${c.mail.info}`],
       ["2. Kontakt in Datenschutzfragen", `Bei Fragen zum Datenschutz wenden Sie sich bitte an: ${c.mail.datenschutz}`],
@@ -28,7 +28,7 @@ const T = {
     ] as [string, string][],
   },
   en: {
-    title: "Privacy policy – bbm-consulting GmbH", h: "Privacy policy", note: "This English translation is provided for convenience only. The German version is legally binding.",
+    title: "Privacy Policy | bbm-consulting GmbH Hamburg", h: "Privacy policy", note: "This English translation is provided for convenience only. The German version is legally binding.",
     s: [
       ["1. Controller", `${c.name}, ${c.street}, ${c.city}\nRepresented by the managing director ${c.ceo}\nPhone: ${c.phone} · Email: ${c.mail.info}`],
       ["2. Data protection contact", `For questions about data protection, please contact: ${c.mail.datenschutz}`],

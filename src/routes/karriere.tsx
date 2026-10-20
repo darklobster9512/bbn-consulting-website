@@ -6,7 +6,7 @@ import { photos } from "@/lib/photos";
 import { useT } from "@/lib/i18n";
 
 export const Route = createFileRoute("/karriere")({
-  head: () => ({ meta: meta("Karriere – bbm-consulting GmbH", "Offene Stellen bei der bbm-consulting GmbH in Hamburg. Jetzt bewerben.") }),
+  head: () => ({ meta: meta("Karriere & Jobs in der Unternehmensberatung Hamburg | bbm-consulting", "Starten Sie Ihre Karriere bei der bbm-consulting GmbH in Hamburg: offene Stellen in der Beratung, flache Hierarchien und spannende Projekte. Jetzt bewerben.", "/karriere") }),
   component: Page,
 });
 
@@ -14,7 +14,7 @@ const imgs = [photos.presentation, photos.workshop, photos.success, photos.team]
 
 const T = {
   de: {
-    title: "Karriere – bbm-consulting GmbH", h: "Karriere", side: "Bewerbung", subject: "Bewerbung: ", cta: "Jetzt bewerben",
+    title: "Karriere & Jobs in der Unternehmensberatung Hamburg | bbm-consulting", h: "Karriere", side: "Bewerbung", subject: "Bewerbung: ", cta: "Jetzt bewerben",
     s1: "Bitte senden Sie Ihre vollständigen Unterlagen (Anschreiben, Lebenslauf, Zeugnisse) als PDF an:", s2: "Initiativbewerbungen sind jederzeit willkommen.",
     p1: "Wir suchen Menschen, die etwas bewegen wollen. Bei bbm-consulting erwarten Sie anspruchsvolle Aufgaben, frühe Verantwortung und ein kollegiales Team.",
     p2: "Was wir Ihnen bieten:",
@@ -27,7 +27,7 @@ const T = {
     ] as [string, string][],
   },
   en: {
-    title: "Careers – bbm-consulting GmbH", h: "Careers", side: "Application", subject: "Application: ", cta: "Apply now",
+    title: "Careers & Consulting Jobs in Hamburg | bbm-consulting", h: "Careers", side: "Application", subject: "Application: ", cta: "Apply now",
     s1: "Please send your complete documents (cover letter, CV, references) as a PDF to:", s2: "Unsolicited applications are always welcome.",
     p1: "We are looking for people who want to make a difference. At bbm-consulting you can expect challenging tasks, early responsibility and a collegial team.",
     p2: "What we offer:",
