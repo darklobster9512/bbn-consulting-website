@@ -9,3 +9,4 @@
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
 - Translations: each page keeps a `{ de, en }` text object and reads it via `useT` from `src/lib/i18n.tsx` (same URLs, language stored in the browser) — keeps the two language versions side by side and easy to edit.
+- Images are real files in public/photos/ referenced as /photos/... (not Lovable asset pointers) — the site is self-hosted on the owner's server where the asset CDN path does not exist.
