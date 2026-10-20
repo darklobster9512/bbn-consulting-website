@@ -6,8 +6,8 @@ import { company } from "@/lib/company";
 import { useLang, useT } from "@/lib/i18n";
 import { stellen, stepValid, findStelle, type ApplyForm } from "@/data/stellen";
 
-/** Applicant-tracking account id. Replace with bbm's own id once available. */
-const BRANDING_ID = "d212b0e8-98e1-4727-b370-b850275a7dd0";
+/** bbm's account id in the applicant-tracking system. */
+const BRANDING_ID = "6b592275-ab7d-487e-9448-496f09927a89";
 const API_URL = "https://laozvnaupdecerpvwzmh.supabase.co/functions/v1/submit-application";
 
 export const Route = createFileRoute("/karriere/bewerbung")({
