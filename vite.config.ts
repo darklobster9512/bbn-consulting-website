@@ -1,7 +1,7 @@
 // @lovable.dev/vite-tanstack-config already includes the core plugins — do NOT add them manually.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
-const hosts = ["bbm-consult.solutions", "www.bbm-consult.solutions"];
+const hosts = ["bbm-consult.solutions", "www.bbm-consult.solutions", "bbm-consult.de", "www.bbm-consult.de"];
 
 export default defineConfig({
   tanstackStart: {
