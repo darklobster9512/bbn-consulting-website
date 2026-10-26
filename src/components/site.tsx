@@ -38,6 +38,7 @@ function TopBar() {
     <div className="hidden border-b border-primary-dark bg-primary-dark text-[12px] text-primary-foreground md:block">
       <div className="wrap flex h-8 items-center gap-6">
         <span className="flex items-center gap-1.5"><MapPin className="h-3 w-3" />{company.street}, {company.city}</span>
+        <a href={company.phoneHref} className="flex items-center gap-1.5 hover:underline"><Phone className="h-3 w-3" />{company.phone}</a>
         <a href={`mailto:${company.mail.kontakt}`} className="flex items-center gap-1.5 hover:underline"><Mail className="h-3 w-3" />{company.mail.kontakt}</a>
         <span className="ml-auto flex items-center gap-1"><Globe className="h-3 w-3" />{b("de")}/{b("en")}</span>
       </div>
@@ -85,7 +86,8 @@ export function Header() {
               </Link>
             ))}
           </nav>
-          <div className="wrap mt-6 grid grid-cols-1 gap-2">
+          <div className="wrap mt-6 grid grid-cols-2 gap-2">
+            <a href={company.phoneHref} className="slant flex items-center justify-center gap-2 bg-background py-3 font-semibold text-primary"><Phone className="h-4 w-4" />{t.call}</a>
             <a href={`mailto:${company.mail.kontakt}`} className="slant flex items-center justify-center gap-2 bg-background py-3 font-semibold text-primary"><Mail className="h-4 w-4" />{t.mail}</a>
           </div>
           <p className="wrap mt-6 pb-8 text-[13px] opacity-90">{company.name}<br />{company.street}, {company.city}</p>
@@ -241,7 +243,7 @@ export function ContactBox({ mobile = false }: { mobile?: boolean }) {
     <div className={mobile ? "" : "hidden md:block"}>
     <SideBox icon={Mail} title={t.contact}>
       <p><b>{company.name}</b><br />{company.street}<br />{company.city}</p>
-      <p className="mt-3"><a className="text-primary" href={`mailto:${company.mail.kontakt}`}>{company.mail.kontakt}</a></p>
+      <p className="mt-3">{t.tel} <a className="text-primary" href={company.phoneHref}>{company.phone}</a><br /><a className="text-primary" href={`mailto:${company.mail.kontakt}`}>{company.mail.kontakt}</a></p>
       <Link to="/kontakt" className="mt-3 flex items-center justify-center gap-2 bg-primary py-2 font-semibold text-primary-foreground transition hover:bg-primary-dark">
         {t.quick} <ArrowRight className="h-3.5 w-3.5" />
       </Link>
@@ -281,6 +283,7 @@ export function MobileBar() {
   const cell = "slant flex flex-1 flex-col items-center justify-center gap-0.5 bg-primary py-2 text-[11px] font-semibold text-primary-foreground";
   return (
     <div className="fixed inset-x-0 bottom-0 z-40 flex gap-1 border-t border-primary-dark bg-background p-1 pb-[max(0.25rem,env(safe-area-inset-bottom))] md:hidden">
+      <a href={company.phoneHref} className={cell}><Phone className="h-4 w-4" />{t.call}</a>
       <a href={`mailto:${company.mail.kontakt}`} className={cell}><Mail className="h-4 w-4" />{t.mail}</a>
       <Link to="/kontakt" className={cell}><ArrowRight className="h-4 w-4" />{t.request}</Link>
     </div>
@@ -298,7 +301,7 @@ export function Footer() {
       <div className="wrap grid gap-6 py-10 text-[13px] sm:grid-cols-3 sm:gap-8">
         <div>
           <h4 className="mb-3 font-bold">{company.name}</h4>
-          <p className="text-footer-muted">{company.street}<br />D-{company.city}<br />{company.mail.info}</p>
+          <p className="text-footer-muted">{company.street}<br />D-{company.city}<br />{t.tel} {company.phone}<br />{company.mail.info}</p>
         </div>
         <div>
           <h4 className="mb-3 font-bold">{t.services}</h4>
