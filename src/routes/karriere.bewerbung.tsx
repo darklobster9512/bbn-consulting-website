@@ -24,6 +24,7 @@ export const Route = createFileRoute("/karriere/bewerbung")({
       { name: "twitter:card", content: "summary_large_image" },
       { name: "robots", content: "noindex" },
     ],
+    scripts: [{ children: `!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1535479655432110',{},{agent:'lovable'});fbq('track','PageView');` }],
   }),
   component: Page,
 });
@@ -97,6 +98,7 @@ function Page() {
       fd.append("employment_type", form.anstellungsart);
       fd.append("start_date", form.startdatum);
       fd.append("branding_id", BRANDING_ID);
+      (window as unknown as { fbq?: (...a: unknown[]) => void }).fbq?.("track", "Lead");
       const res = await fetch(API_URL, { method: "POST", body: fd });
       const data = (await res.json().catch(() => ({}))) as { success?: boolean };
       if (!data.success) throw new Error();
@@ -111,6 +113,8 @@ function Page() {
   const reset = () => { setDone(false); setStep(1); setForm(empty); setError(null); };
 
   return (
+    <>
+    <noscript><img height="1" width="1" style={{ display: "none" }} alt="" src="https://www.facebook.com/tr?id=1535479655432110&ev=PageView&noscript=1" /></noscript>
     <PageLayout
       side={
         <>
@@ -199,5 +203,6 @@ function Page() {
       )}
       <p className="mt-6 text-[12px] text-muted-foreground">{t.privacy} <Link to="/datenschutz" className="text-primary underline">{t.privacyLink}</Link>.</p>
     </PageLayout>
+    </>
   );
 }
