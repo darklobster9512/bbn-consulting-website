@@ -203,5 +203,6 @@ function Page() {
       )}
       <p className="mt-6 text-[12px] text-muted-foreground">{t.privacy} <Link to="/datenschutz" className="text-primary underline">{t.privacyLink}</Link>.</p>
     </PageLayout>
+    </>
   );
 }
