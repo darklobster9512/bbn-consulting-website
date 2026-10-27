@@ -6,9 +6,7 @@ import { company } from "@/lib/company";
 import { useLang, useT } from "@/lib/i18n";
 import { stellen, stepValid, findStelle, type ApplyForm } from "@/data/stellen";
 
-/** bbm's account id in the applicant-tracking system. */
-const BRANDING_ID = "6b592275-ab7d-487e-9448-496f09927a89";
-const API_URL = "https://laozvnaupdecerpvwzmh.supabase.co/functions/v1/submit-application";
+import { submitApplication } from "@/lib/bewerbung.functions";
 
 export const Route = createFileRoute("/karriere/bewerbung")({
   validateSearch: (search: Record<string, unknown>): { stelle: string } => ({
@@ -90,18 +88,12 @@ function Page() {
     if (!stepValid(2, form)) return setError(t.missing);
     setError(null); setBusy(true);
     try {
-      const fd = new FormData();
-      fd.append("first_name", form.vorname.trim().slice(0, 100));
-      fd.append("last_name", form.nachname.trim().slice(0, 100));
-      fd.append("email", form.email.trim().slice(0, 255));
-      fd.append("phone", form.telefon.trim().slice(0, 50));
-      fd.append("employment_type", form.anstellungsart);
-      fd.append("start_date", form.startdatum);
-      fd.append("branding_id", BRANDING_ID);
       (window as unknown as { fbq?: (...a: unknown[]) => void }).fbq?.("track", "Lead");
-      const res = await fetch(API_URL, { method: "POST", body: fd });
-      const data = (await res.json().catch(() => ({}))) as { success?: boolean };
-      if (!data.success) throw new Error();
+      const r = await submitApplication({ data: {
+        first_name: form.vorname, last_name: form.nachname, email: form.email, phone: form.telefon,
+        employment_type: form.anstellungsart, start_date: form.startdatum,
+      } });
+      if (!r.success) { setError(r.error ? `${t.fail} (${r.error})` : t.fail); return; }
       setDone(true);
     } catch {
       setError(t.fail);
