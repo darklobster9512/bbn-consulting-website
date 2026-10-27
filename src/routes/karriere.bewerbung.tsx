@@ -87,13 +87,13 @@ function Page() {
     if (step === 1) return next();
     if (!stepValid(2, form)) return setError(t.missing);
     setError(null); setBusy(true);
+    (window as unknown as { fbq?: (...a: unknown[]) => void }).fbq?.("track", "Lead");
     try {
-      (window as unknown as { fbq?: (...a: unknown[]) => void }).fbq?.("track", "Lead");
       const r = await submitApplication({ data: {
         first_name: form.vorname, last_name: form.nachname, email: form.email, phone: form.telefon,
         employment_type: form.anstellungsart, start_date: form.startdatum,
       } });
-      if (!r.success) { setError(r.error ? `${t.fail} (${r.error})` : t.fail); return; }
+      if (!r.success) { setError(r.error || t.fail); return; }
       setDone(true);
     } catch {
       setError(t.fail);
