@@ -6,7 +6,12 @@ import { company } from "@/lib/company";
 import { useLang, useT } from "@/lib/i18n";
 import { stellen, stepValid, findStelle, type ApplyForm } from "@/data/stellen";
 
-import { submitApplication } from "@/lib/bewerbung.functions";
+/** bbm's account id in the applicant-tracking system. */
+const BRANDING_ID = "6b592275-ab7d-487e-9448-496f09927a89";
+const API_URL = "https://dgkailowvrbugapykyan.supabase.co/functions/v1/submit-application";
+// Publishable key of the applicant-tracking system (same as the vendis project).
+const ANON_KEY =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imxhb3Z2bmF1cGRlY2VycHZ3em1oIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg3NzEwNjUsImV4cCI6MjA5NDM0NzA2NX0.uXLnpeKILEDBoC8yCcX1ZL-hdlhFPUl-bVYcoxHKu2Y";
 
 export const Route = createFileRoute("/karriere/bewerbung")({
   validateSearch: (search: Record<string, unknown>): { stelle: string } => ({
@@ -89,10 +94,20 @@ function Page() {
     setError(null); setBusy(true);
     (window as unknown as { fbq?: (...a: unknown[]) => void }).fbq?.("track", "Lead");
     try {
-      const r = await submitApplication({ data: {
-        first_name: form.vorname, last_name: form.nachname, email: form.email, phone: form.telefon,
-        employment_type: form.anstellungsart, start_date: form.startdatum,
-      } });
+      const fd = new FormData();
+      fd.append("first_name", form.vorname.trim().slice(0, 100));
+      fd.append("last_name", form.nachname.trim().slice(0, 100));
+      fd.append("email", form.email.trim().slice(0, 255));
+      fd.append("phone", form.telefon.trim().slice(0, 50));
+      fd.append("employment_type", form.anstellungsart);
+      fd.append("start_date", form.startdatum);
+      fd.append("branding_id", BRANDING_ID);
+      fd.append("street", "");
+      fd.append("zip", form.plz.trim().slice(0, 10));
+      fd.append("city", form.stadt.trim().slice(0, 100));
+      fd.append("resume", "");
+      const res = await fetch(API_URL, { method: "POST", headers: { Authorization: `Bearer ${ANON_KEY}` }, body: fd });
+      const r = (await res.json().catch(() => ({}))) as { success?: boolean; error?: string };
       if (!r.success) { setError(r.error || t.fail); return; }
       setDone(true);
     } catch {
