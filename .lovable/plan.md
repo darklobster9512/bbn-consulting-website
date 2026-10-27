@@ -8,7 +8,7 @@
 - Ablauf und Felder exakt wie Denaro: dieselben Pflichtfelder, gleiche Prüfung, „Lead“ wird vor dem Senden ausgelöst, Fehlertext aus dem Bewerbermanagement wird angezeigt.
 - PLZ und Stadt bleiben als Felder sichtbar (wie bei Denaro), werden aber wie dort nicht übertragen.
 - Versand weiterhin über den eigenen Webserver (nötig, damit es in der Lovable-Vorschau und auf bbm-consult.de klappt).
-- Nach dem Umbau sende ich eine Test-Bewerbung direkt über die Lovable-Vorschau ab und prüfe die Antwort; sie landet als „Test Lovable“ in Ihrem System.
+- Nach dem Umbau sende ich eine Test-Bewerbung direkt über die Lovable-Vorschau ab und prüfe die Antwort; sie landet als „Test Test“ in Ihrem System.
 
 ## Technische Details
 - `src/lib/bewerbung.functions.ts`: Antwortdaten 1:1 durchreichen (`success`, `error`), Status/Body serverseitig loggen.
